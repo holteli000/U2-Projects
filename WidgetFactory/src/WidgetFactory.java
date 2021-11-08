@@ -2,22 +2,77 @@ import javax.swing.*;
 
 public class WidgetFactory {
 
+
+
+    final static int WIDGETS_PER_HOUR =10;
+    final static int NUM_SHIFTS = 2;
+    final static int SHIFT_HOURS = 8;
+    final static int  NUMWORKERS = 5;
+    final static double WAGE = 16.50;
+    final static double WIDGET_PRICE = 10.00;
+   static int numWidgets = 0;
+
     public static void main(String[] args) {
 
- double widgets = Double.parseDouble(JOptionPane.showInputDialog("how many widgets are you buying "));
+        input();
 
- Days(widgets);
+        output();
+
+    }
+
+    public static void input(){
+
+       numWidgets = Integer.parseInt(JOptionPane.showInputDialog("how many do you need? ")) ;
 
 
     }
 
-    public static void Days (double widgets) {
+    public static int widgetsPerDay(){
 
-        double hours = (24 - 8);
-        double days = ( widgets / 10 )/ hours;
+        return NUM_SHIFTS * SHIFT_HOURS * WIDGETS_PER_HOUR;
 
-        JOptionPane.showMessageDialog(null, "it took" + days +" days to make " + widgets + "widgets");
+
+
+
     }
+
+    public static int numDAYS(){
+
+        return (int) Math.ceil (numWidgets/(double)widgetsPerDay());
+
+    }
+
+public static double cost(){
+
+        return numDAYS() * NUM_SHIFTS * SHIFT_HOURS * WAGE * NUMWORKERS;
+
+
+
+
+}
+
+public static double profit(){
+
+      return numWidgets * WIDGET_PRICE - cost();
+
+
+}
+public static void output(){
+
+        String message = "";
+
+        message += "number of widgets:" + numWidgets;
+        message += "\nNumber of days:" + numDAYS();
+        message += "\ncost of widgets:" + (numWidgets * WIDGET_PRICE);
+        message += "\ncost of production:"+ cost();
+        message += "\nprofit:" + profit();
+
+        JOptionPane.showMessageDialog(null, message);
+
+
+}
+
+
 }
 /*
     Lessons L1 - L3
