@@ -1,6 +1,25 @@
+import javax.swing.*;
+
 public class WidgetFactory {
 
-    /*
+    public static void main(String[] args) {
+
+ double widgets = Double.parseDouble(JOptionPane.showInputDialog("how many widgets are you buying "));
+
+ Days(widgets);
+
+
+    }
+
+    public static void Days (double widgets) {
+
+        double hours = (24 - 8);
+        double days = ( widgets / 10 )/ hours;
+
+        JOptionPane.showMessageDialog(null, "it took" + days +" days to make " + widgets + "widgets");
+    }
+}
+/*
     Lessons L1 - L3
 
     You have been asked by the manager of the Widget Factory to create a program which will tell how many days it will take to produce a number of widgets.
@@ -28,4 +47,3 @@ public class WidgetFactory {
      Profit: $760.00
 
      */
-}
